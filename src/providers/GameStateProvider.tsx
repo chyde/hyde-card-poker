@@ -87,10 +87,10 @@ export default function GameStateProvider({
     const allHandsEval = [...otherPlayersHandsEval, myHandEval];
 
     const winningHands = allHandsEval.sort((handA, handB) => {
-      // TODO: Implement tie-breaker
-      // if (handA.orderedEval[0] === handB.orderedEval[0]) {
-      //   return handA.orderedEval[1] - handB.orderedEval[1];
-      // }
+      // TODO: Implement deeper tie-breaker
+      if (handA.orderedEval[0] == handB.orderedEval[0]) {
+        return handB.orderedEval[1] - handA.orderedEval[1];
+      }
       return handA.orderedEval[0] - handB.orderedEval[0];
     });
     setWinner(winningHands[0].playerName);

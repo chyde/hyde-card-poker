@@ -208,10 +208,10 @@ export const EvaluateHand = (
       return {
         playerName: playerName,
         name: "One Pair",
-        description: `${pairCardsOrdered[0].name}s`,
+        description: `${pairCardsOrdered[0]?.name}s`,
         orderedEval: [
           8,
-          pairCardsOrdered[0].value,
+          pairCardsOrdered[0]?.value,
           leftover ? leftover.value : 0,
         ],
       };
@@ -219,11 +219,11 @@ export const EvaluateHand = (
     return {
       playerName: playerName,
       name: "Two Pair",
-      description: `${pairCardsOrdered[0].name}s and ${pairCardsOrdered[1].name}s`,
+      description: `${pairCardsOrdered[0]?.name}s and ${pairCardsOrdered[1]?.name}s`,
       orderedEval: [
         7,
-        pairCardsOrdered[0].value,
-        pairCardsOrdered[1].value,
+        pairCardsOrdered[0]?.value,
+        pairCardsOrdered[1]?.value,
         leftover ? leftover.value : 0,
       ],
     };
@@ -232,7 +232,7 @@ export const EvaluateHand = (
   return {
     playerName: playerName,
     name: "High Card",
-    description: `${sortedHand[4].name} high`,
+    description: `${sortedHand[4]?.name} high`,
     orderedEval: [10, ...sortedHand.reverse().map((card) => card.value)],
   };
 };

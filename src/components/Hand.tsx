@@ -57,8 +57,8 @@ export function Hand({
               >
                 {gameOver ? "New Game" : "Trade"}
               </button>
-              <div className="py-2">
-                {winner ? `${winner} Wins!` : null} {winner}
+              <div className="py-2 bold">
+                {winner ? `${winner} Wins!` : null}
               </div>
             </>
           ) : null}

@@ -180,7 +180,7 @@ export const EvaluateHand = (
   if (pairs.size === 3 || pairs.size === 4) {
     // 3 of a kind, Two Pair or One Pair
 
-    let pairCardsOrdered: Array<Card> = [];
+    const pairCardsOrdered: Array<Card> = [];
     let leftover: Card | undefined;
 
     pairValues.reverse().forEach((value) => {

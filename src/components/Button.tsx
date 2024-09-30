@@ -3,7 +3,7 @@ import clsx from "clsx";
 export default function Button({
   children,
   onClick,
-  pressed,
+  // pressed,
   disabled,
 }: {
   children: React.ReactNode;

@@ -12,35 +12,10 @@ import {
   Card,
 } from "../utils/poker";
 
+import { useGameState } from "@/providers/GameStateProvider";
+
 export default function Home() {
-  const OTHER_PLAYERS = 3;
-  const [isShuffled, setIsShuffled] = useState(false);
-
-  const [gameDeck, setGameDeck] = useState<Card[]>([]);
-
-  const [myHand, setMyHand] = useState<Card[]>([]);
-  const [otherPlayersHands, setOtherPlayersHands] = useState<Array<Card[]>>([]);
-
-  useEffect(() => {
-    if (isShuffled) {
-      return;
-    }
-    setIsShuffled(true);
-
-    const deck = ShuffleDeck(CreateDeck());
-    const myHand = DealHand(deck, 5);
-    setMyHand(myHand);
-
-    setOtherPlayersHands(
-      Array.from({ length: OTHER_PLAYERS }, () => {
-        return DealHand(deck, 5);
-      })
-    );
-
-    setGameDeck(() => {
-      return deck;
-    });
-  }, [isShuffled]);
+  const { myHand, otherPlayersHands, gameOver } = useGameState();
 
   return (
     <div className="bg-green-700">
@@ -50,7 +25,7 @@ export default function Home() {
             <Hand
               key={`player-${index}`}
               hand={hand}
-              revealed={false}
+              revealed={gameOver}
               isCPU={true}
             />
           );

@@ -4,13 +4,16 @@ export default function Button({
   children,
   onClick,
   pressed,
+  disabled,
 }: {
   children: React.ReactNode;
   onClick: () => void;
   pressed?: boolean;
+  disabled?: boolean;
 }) {
   return (
     <button
+      disabled={disabled}
       className={clsx(
         "bold",
         "inline-flex",
@@ -18,18 +21,19 @@ export default function Button({
         "items-center",
         "justify-center",
         "rounded-md",
-        "bg-amber-500/50",
+
         "border-2",
         "border-yellow-500",
         "px-3",
         "transition",
         "ease-in-out",
         "duration-500",
-        pressed ? "mb-2" : "mb-16",
         "font-medium",
         "text-neutral-50",
+        disabled
+          ? "bg-gray-900/50 text-gray-900 border-gray-800"
+          : "bg-amber-500/50",
         "shadow-lg",
-        "shadow-neutral-500/20",
         "transition",
         "active:scale-95"
       )}

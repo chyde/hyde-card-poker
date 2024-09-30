@@ -100,7 +100,6 @@ export const EvaluateHand = (hand: Array<Card>): string => {
       pairs.set(card.value, 1);
     }
   });
-  console.log("pairs", pairs);
 
   if (pairs.size === 2) {
     return "Full House";

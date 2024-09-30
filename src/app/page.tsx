@@ -46,9 +46,16 @@ export default function Home() {
     <div className="bg-green-700">
       <div key="all-hands" className="flex flex-col justify-evenly">
         {otherPlayersHands?.map((hand, index) => {
-          return <Hand key={`player-${index}`} hand={hand} revealed={false} />;
+          return (
+            <Hand
+              key={`player-${index}`}
+              hand={hand}
+              revealed={false}
+              isCPU={true}
+            />
+          );
         })}
-        <Hand hand={myHand} revealed={true} />
+        <Hand hand={myHand} revealed={true} isCPU={false} />
       </div>
     </div>
   );

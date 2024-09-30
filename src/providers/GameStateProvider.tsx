@@ -6,7 +6,6 @@ import {
   createContext,
   useCallback,
 } from "react";
-import { Hand } from "../components/Hand";
 
 import {
   CreateDeck,
@@ -88,16 +87,12 @@ export default function GameStateProvider({
     const allHandsEval = [...otherPlayersHandsEval, myHandEval];
 
     const winningHands = allHandsEval.sort((handA, handB) => {
+      // TODO: Implement tie-breaker
       // if (handA.orderedEval[0] === handB.orderedEval[0]) {
       //   return handA.orderedEval[1] - handB.orderedEval[1];
       // }
       return handA.orderedEval[0] - handB.orderedEval[0];
     });
-    console.log(
-      "handssorted",
-      winningHands.map((hand) => hand.orderedEval)
-    );
-
     setWinner(winningHands[0].playerName);
   };
 
